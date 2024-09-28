@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+:root{
+    --main-color: #081723;
+    --secondary-color: #ffffff;
+    --dark-accent-color: #12304b;
+    --dark-accent-color-disapled: #1b4971;
+    --light-accent-color: #14403B;
+}
+
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--dark-accent-color);
+}
+
+.bg-light
+{
+    background-color: var(--secondary-color);
+}
+
+.text-light
+{
+    color: var(--main-color);
+}
+
+.btn-light
+{
+    background-color: var(--light-accent-color);
+    color: var(--secondary-color);
+    padding: 10px 25px ;
+    border: 3px solid #012623;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn-light:disabled
+{
+    cursor: not-allowed;
+    background-color: #288277;
+    border-color: #024b45;
+}
+
+.btn-light:hover:disabled{
+    background-color: #288277;
+    border-color: #024b45;
+}
+
+.btn-light:hover
+{
+    background-color: #012623;
+}
+
+input:focus,
+textarea:focus
+{
+  border: 0;
+  box-shadow: var(--shadow) !important;
+}
+
+.form-control
+{
+  border-radius: 6px;
+  margin-block: 8px;
+}
+

@@ -1,0 +1,42 @@
+<!-- games -->
+<section class="bg-light dark:bg-gray-800">
+
+    <div class="md:p-4">
+
+        <div class="my-4">
+            <input [(ngModel)]="text" placeholder="search by name/category..." type="search" class="block rounded-lg w-1/2 focus:outline-[var(--light-accent-color)] m-auto dark:focus:outline-[var(--dark-accent-color)] dark:bg-slate-600 dark:text-white dark:placeholder:text-white">
+        </div>
+
+        <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4 m-8">
+
+            @for (game of _CategoriesService.games() | search: text; track game.id) {
+                @if ($index > 50) {
+                        @defer (on interaction(more)) {
+                            <div [routerLink]="['/details', game.id]" class="cursor-pointer col-span-4 rounded-md text-center shadow-md shadow-gray-500 hover:scale-95 hover:transition-all hover:transition[0.4s] dark:shadow-slate-900 dark:text-white">
+                                <img [src]="game.thumbnail" class="w-full" [alt]="game.thumbnail">
+                                <div class="py-4">
+                                    <h2 class="text-[26px] font-[500]">{{game.title}}</h2>
+                                    <p>{{$index}}</p>
+                                    <h3>{{game.genre}}</h3>
+                                    <h5>{{game.publisher}}</h5>
+                                </div>
+                            </div>
+                        }
+                        
+                }
+                @else {
+                            <div [routerLink]="['/details', game.id]" class="cursor-pointer col-span-4 rounded-md text-center shadow-md shadow-gray-500 hover:scale-95 hover:transition-all hover:transition[0.4s] dark:shadow-slate-900 dark:text-white">
+                                <img [src]="game.thumbnail" [alt]="game.title" class="w-full">
+                                <div class="py-4">
+                                    <h2 class="md:text-[26px] font-[500]">{{game.title}}</h2>
+                                    <h3>{{game.genre}}</h3>
+                                    <h5>{{game.publisher}}</h5>
+                                </div>
+                            </div>
+                    }
+                }
+            </div>
+            <button #more class="btn-light block mx-auto mb-4">More Games</button>
+            
+        </div>
+</section>
